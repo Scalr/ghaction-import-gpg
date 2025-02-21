@@ -26,7 +26,7 @@ runs:
     - id: gpg-pubkey
       run: |
         pubkey=$(gpg --export --armor ${{ steps.gpg-fingerprint.outputs.fingerprint }} | sed 's/$/\\n/' | tr -d '\n')
-        echo "::set-output name=pubkey::$pubkey"
+        echo "pubkey=$pubkey" >> $GITHUB_OUTPUT
       shell: bash
       name: set gpg key pubkey
 
